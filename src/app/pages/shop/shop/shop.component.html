@@ -1,0 +1,8 @@
+<div class="container">
+  <div class="mb-5" *ngFor="let d of [1, 2, 3, 4]">
+    <shared-carousel-image
+      [carouselData]="electronicItems"
+      (selectedCardItem)="cardItem($event)"
+    ></shared-carousel-image>
+  </div>
+</div>

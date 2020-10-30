@@ -10,4 +10,12 @@ export const routes: Routes = [
         (mod) => mod.DashboardModule
       ),
   },
+  {
+    path: 'shop',
+    component: DashboardLayoutComponent,
+    loadChildren: () =>
+      import('./../../pages//shop/shop.module').then(
+        (mod) => mod.ShopModule
+      ),
+  },
 ];

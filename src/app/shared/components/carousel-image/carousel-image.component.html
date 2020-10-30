@@ -1,0 +1,78 @@
+<h4 class="mb-4">{{ carouselData.header }}</h4>
+<div
+  id="{{ _courselId }}"
+  class="carousel slide border-right border-left border-secondary"
+  data-interval="false"
+  data-ride="carousel"
+  (mouseenter)="isCarouselControl = true"
+  (mouseleave)="isCarouselControl = false"
+>
+  <ol class="carousel-indicators">
+    <li
+      class="bg-dark"
+      [attr.data-target]="'#' + _courselId"
+      [attr.data-slide-to]="i"
+      [class.active]="i === 0"
+      *ngFor="let images of carouselDescription; let i = index"
+    ></li>
+  </ol>
+  <div class="carousel-inner">
+    <div
+      class="carousel-item"
+      [class.active]="i === 0"
+      *ngFor="let imagesData of carouselDescription; let i = index"
+    >
+      <div class="row">
+        <div
+          class="d-flex px-0 {{ carouselClzz }}"
+          *ngFor="let d of imagesData"
+        >
+          <div class="card border border-secondary flex-fill rounded-0">
+            <img [src]="d.imagePath" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h6 class="card-title">{{ d.title }}</h6>
+              <h6 class="card-text"> 
+                <small>&#8377;</small> 12999.00
+              </h6>
+            </div>
+            <div class="card-footer bg-white border-0 pt-0">
+              <div class="row">
+                <div class="col-lg-6 pr-0">
+                  <a class="text-primary" (click)="addToCard(d)">
+                    Add To Card</a
+                  >
+                </div>
+                <div class="col-lg-6 pr-0">
+                  <a class="text-success">Quick View</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-container *ngIf="isCarouselControl">
+    <a
+      class="carousel-control-prev bg-white"
+      href="{{ '#' + _courselId }}"
+      role="button"
+      data-slide="prev"
+    >
+      <span><i-feather class="text-dark" name="chevron-left"></i-feather></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a
+      class="carousel-control-next bg-white"
+      href="{{ '#' + _courselId }}"
+      role="button"
+      data-slide="next"
+    >
+      <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span> -->
+      <span
+        ><i-feather class="text-dark" name="chevron-right"></i-feather
+      ></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </ng-container>
+</div>
